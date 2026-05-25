@@ -1,0 +1,23 @@
+{
+  "name": "polyrepo-test-fe",
+  "version": "0.1.0",
+  "description": "Polyrepo demo frontend: React + Vite SPA talking to polyrepo-test-be.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.0"
+  }
+}

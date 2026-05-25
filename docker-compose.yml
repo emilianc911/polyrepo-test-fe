@@ -1,0 +1,23 @@
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    environment:
+      # Inside the shared docker network, the BE compose stack exposes a
+      # service called `api` on port 4000. Override this when pointing at a
+      # remote BE (e.g. http://my-be.example.com).
+      BACKEND_URL: ${BACKEND_URL:-http://api:4000}
+    ports:
+      - "${WEB_PORT:-8080}:8080"
+    networks:
+      - default
+      - polyrepo-shared
+
+networks:
+  default:
+  polyrepo-shared:
+    # External shared network created once on the host:
+    #   docker network create polyrepo-shared
+    # The BE compose stack joins the same network and registers `api` in DNS.
+    external: true
+    name: polyrepo-shared
